@@ -1,0 +1,15 @@
+<h1>Hello <%= @current_user[:username] %></h1>
+
+<% if @users_sites %>
+<table>
+    <tr><th>ID</th><th>Slug</th><th>Name</th><th>Domain</th></tr>
+    <% @users_sites.each do |nation| %>
+    <% nation.each do |site| %>
+    <tr><th><%= site["id"] %></th><th><%= site["slug"] %></th><th><%= site["name"] %></th><th><%= site["domain"] %></th></tr>
+    <% end %>
+    <% end %>
+</table>
+<br>
+<% else %>
+You don't have any sites.
+<% end %>

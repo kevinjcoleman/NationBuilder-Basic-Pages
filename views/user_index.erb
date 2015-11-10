@@ -1,0 +1,8 @@
+<h2>Hello <%= @current_user[:username] %></h2>
+
+<table>
+    <tr><th>ID</th><th>Username</th><th>Password</th><th>API Key</th><th>Nation Slug</th></tr>
+<% @users.each do |user| %>
+    <tr><th><%= user[:id] %></th><th><%= user[:username] %></th><th><%= user[:password] %></th><th><%= user[:api_key] %></th><th><%= user[:nation_slug] %></th></tr>
+    <% end %>
+</table>

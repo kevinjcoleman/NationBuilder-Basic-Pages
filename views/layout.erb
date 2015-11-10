@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= @title %> - NationBuilder Pages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="App for interacting with NationBuilder's API">
+    <meta name="author" content="Kevin Coleman">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link href="<%= url('/main.css?version=3') %>" rel="stylesheet" type="text/css" />
+<body>
+<div class="navbar navbar-inverse">
+ <div class="container">
+          <a class="navbar-brand" href="/">Basic Pages</a>
+     <% if @current_user != nil %>
+     <p class="navbar-text navbar-right">Welcome back <a href="/<%= @current_user[:username] %>" class="navbar-link"><%= @current_user[:username] %></a>. <a href="/auth/logout" class="navbar-link">Logout.</a></p>
+     <% else %>
+     <a class="btn btn-default navbar-btn navbar-right" href="/create/new/user" role="button">Create an account</a>
+     <a class="btn btn-default navbar-btn navbar-right" href="/auth/login" role="button">Sign in</a>
+     <% end %>
+    </div>
+</div>
+ <div class="container">
+      <% if flash[:success] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:success] %>
+    </div>
+    <% end %>
+
+    <% if flash[:error] %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:error] %>
+    </div>
+    <% end %>
+    <%= yield %>
+    </div>
+    <hr noshade>
+    Powered by <a href = 'http://nationbuilder.com/' target = _new>NationBuilder</a> and <a href = 'http://kevincoleman.rocks/' target = _new>Kevin James Coleman</a>.
+  </body>
+</html>
